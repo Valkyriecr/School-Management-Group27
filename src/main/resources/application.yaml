@@ -1,0 +1,16 @@
+server:
+  port: 8090
+  error:
+    include-stacktrace: never
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/schoolmanagementgroup27-db?createDatabaseIfNotExist=true
+    username: root
+    password: J@dan0721
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      ddl-auto: update
+      show-sql: true
