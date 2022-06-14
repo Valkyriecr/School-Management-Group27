@@ -1,3 +1,6 @@
+//Daniel Marais
+//Student Number: 219476845
+//Group 27
 package za.ac.cput.schoolmanagement.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,9 +10,8 @@ import za.ac.cput.schoolmanagement.domain.EmployeeAddress;
 import java.util.List;
 
 @Repository
-public interface EmployeeAddressRepository extends JpaRepository<EmployeeAddress,String> {
+public interface EmployeeAddressRepository extends JpaRepository<EmployeeAddress,EmployeeAddress.EmployeeAddressId> {
     List<EmployeeAddress> findAll();
-    void deleteById(String id);
     List<EmployeeAddress>findByStaffId(String staffId);
 
 }

@@ -1,25 +1,22 @@
+//Daniel Marais
+//Student Number: 219476845
+//Group 27
+
 package za.ac.cput.schoolmanagement.domain;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@IdClass(Employee.EmployeeId.class)
 public class Employee implements Serializable{
     @NotNull
     @Id
     public String staffId;
     @NotNull
     public String email;
-  /*  @Embedded private Name name;
-    public Name getName()
-    {
-        return name;
-    }*/
 
     protected Employee(){}
     public Employee(Builder builder)
