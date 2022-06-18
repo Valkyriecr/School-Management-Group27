@@ -6,7 +6,9 @@ StudentServiceImplementation.java
 package za.ac.cput.schoolmanagement.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.schoolmanagement.domain.Student;
 import za.ac.cput.schoolmanagement.repository.IStudentRepository;
 import za.ac.cput.schoolmanagement.service.service.IStudentService;
@@ -31,7 +33,7 @@ public class StudentServiceImplementation implements IStudentService {
 
     @Override
     public Student findByStudentId(String studentId){
-        return this.repository.findByStudentId(studentId);
+        return this.repository.findByStudentId(studentId).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @Override

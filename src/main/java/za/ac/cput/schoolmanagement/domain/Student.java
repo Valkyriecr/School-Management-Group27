@@ -11,16 +11,20 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Table(name = "Students")
 @IdClass(Student.StudentId.class)
 public class Student {
     //Variables
     @NotNull
     @Id
+    @Column(name = "Student_Id")
     public String studentId;
     @NotNull
+    @Column(name="Email")
     public String email;
     @NotNull
     @Embedded
+    @Column(name="Student_Name")
     public Name name;
 
     //Constructor
