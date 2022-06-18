@@ -14,12 +14,12 @@ import java.util.Objects;
 public class Employee implements Serializable{
     @NotNull
     @Id
-    public String staffId;
+    private String staffId;
     @NotNull
     public String email;
 
     protected Employee(){}
-    public Employee(Builder builder)
+    private Employee(Builder builder)
     {
         this.staffId=builder.staffId;
         this.email=builder.email;
@@ -33,8 +33,8 @@ public class Employee implements Serializable{
     }
     public static class Builder
     {
-        public String staffId;
-        public String email;
+        private String staffId;
+        private String email;
 
         public Builder staffId(String staffId)
         {
@@ -56,7 +56,7 @@ public class Employee implements Serializable{
 
     public static class EmployeeId implements Serializable
     {
-        public String staffId;
+        private String staffId;
         public EmployeeId(String staffId){this.staffId=staffId;}
         protected EmployeeId(){}
         public String getStaffId(){return staffId;}
