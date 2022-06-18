@@ -18,6 +18,7 @@ private final NameRepository repository;
     private static NameServiceImplementation nameService;
 
     private NameServiceImplementation(){
+
         this.repository = NameRepository.nameRepository();
     }
 
