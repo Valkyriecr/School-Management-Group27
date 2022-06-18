@@ -19,7 +19,7 @@ public class Name {
     @NotNull
     private String lastName;
 
-    //Constructor
+   //Constructor
     public Name(){
         firstName=null;
         middleName=null;

@@ -10,7 +10,7 @@ import za.ac.cput.schoolmanagement.service.IService;
 
 import java.util.List;
 
-public interface StudentService extends IService<Student,Student.StudentId> {
+public interface IStudentService extends IService<Student,Student.StudentId> {
     List<Student>findAll();
-    List<Student>findByStudentId(String studentId);
+    Student findByStudentId(String studentId);
 }

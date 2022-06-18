@@ -1,114 +1,85 @@
-/* City.java
-   Entity for the City
-   Author: Juan-Lee Zidane Klink (218236883)
-   Date: 14 June 2022
- */
+
 package za.ac.cput.schoolmanagement.domain;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
+
 @Embeddable
-@IdClass(City.CityId.class)
-public class City implements Serializable {
+public class City {
     @NotNull
-    @Id
-    private String id;
+    String cityId;
     @NotNull
-    private String name;
-    /* uncomment after merge
+    String cityName;
+    @NotNull
     @Embedded
-    private Country country;
-
-    private Country getCountry(){
-        return country;
+    Country country;
+    //constructor
+    public City(){
+        cityId=null;
+        cityName=null;
+        country=null;
     }
-     */
+    //Getters And Setters
+    public String getCityId() {return cityId;}
 
-    protected City(){
+    public void setCityId(String cityId) {this.cityId = cityId;}
 
+    public String getCityName() {return cityName;}
+
+    public void setCityName(String cityName) {this.cityName = cityName;}
+
+    public Country getCountry() {return country;}
+
+    public void setCountry(Country country) {this.country = country;}
+
+
+
+    //Builder Pattern
+
+    public static class Builder{
+        public String cityId;
+        public String cityName;
+        public Country country;
+        public Builder cityId(String cityId){this.cityId=cityId;return this;}
+        public Builder cityName(String cityName){this.cityName=cityName;return this;}
+        public Builder country(Country country){this.country=country;return this;}
+
+        public City build(){
+            City city = new City();
+            city.setCityId(cityId);
+            city.setCityName(cityName);
+            city.setCountry(country);
+            return city;
+        }
     }
 
-
-    private City(Builder builder){
-        this.id = builder.id;
-        this.name = builder.name;
-
+    public static class CityId implements Serializable{
+        public String cityId;
+        public CityId(String cityId){this.cityId=cityId;}
+        public String getCityId(){return cityId;}
     }
-
-    public String getId() {
-        return id;
+    @Override
+    public boolean equals(Object o){
+        if(this==o)return true;
+        if(o==null || getClass()!=o.getClass())return false;
+        City city = (City) o;
+        return cityId.equals(city.cityId)&&cityName.equals(city.cityName)&&country.equals(city.country);
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public int hashCode() {
+        return Objects.hash(cityId, cityName, country);
     }
 
     @Override
     public String toString() {
         return "City{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                "cityId='" + cityId + '\'' +
+                ", cityName='" + cityName + '\'' +
+                ", country=" + country +
                 '}';
     }
-
-
-    public static class Builder {
-        private String id;
-        private String name;
-
-        public Builder setId(String id){
-            this.id = id;
-            return this;
-        }
-        public Builder setName(String name){
-            this.name = name;
-            return this;
-        }
-
-
-        public Builder copy(City city){
-            this.id = city.id;
-            this.name = city.name;
-            return this;
-        }
-
-        public City build(){
-            return new City(this);
-        }
-    }
-
-    public static class CityId implements Serializable{
-        private String id;
-
-        public CityId(String id){
-            this.id = id;}
-            protected CityId(){
-    }
-    public String getId(){
-            return id;
-    }}
-
-    @Override
-    public boolean equals(Object o){
-        if(this==o) return true;
-        if(o==null || getClass()!=o.getClass()) return false;
-        City city = (City) o;
-        return id.equals(city.id);
-
-    }
-
-    @Override
-    public int hashCode(){return Objects.hash(id);}
 }

@@ -10,9 +10,10 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.schoolmanagement.domain.Student;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student,Student.StudentId> {
+public interface IStudentRepository extends JpaRepository<Student,Student.StudentId> {
     List<Student>findAll();
-    List<Student>findByStudentId(String studentId);
+    Optional<Student> findByStudentId(String studentId);
 }

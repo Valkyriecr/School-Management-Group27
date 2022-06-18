@@ -11,9 +11,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import za.ac.cput.schoolmanagement.domain.Address;
+import za.ac.cput.schoolmanagement.domain.City;
+import za.ac.cput.schoolmanagement.domain.Country;
 import za.ac.cput.schoolmanagement.domain.StudentAddress;
+import za.ac.cput.schoolmanagement.factory.AddressFactory;
+import za.ac.cput.schoolmanagement.factory.CityFactory;
+import za.ac.cput.schoolmanagement.factory.CountryFactory;
 import za.ac.cput.schoolmanagement.factory.StudentAddressFactory;
-import za.ac.cput.schoolmanagement.service.service.StudentAddressService;
+import za.ac.cput.schoolmanagement.service.service.IStudentAddressService;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,10 +28,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudentAddressServiceImplementationTest {
-    public final StudentAddress studentAddress= StudentAddressFactory.build("1234");
+    public final Country country = CountryFactory.build("ZA","South Africa");
+    public final City city = CityFactory.build("CPT","Cape Town",country);
+    public final Address address = AddressFactory.build("19","house","19","Yellowwood",7800,city);
+    public final StudentAddress studentAddress= StudentAddressFactory.build("1234",address);
     public StudentAddress.StudentAddressId studentAddressId=StudentAddressFactory.buildId(this.studentAddress);
     @Autowired
-    public StudentAddressService service;
+    public IStudentAddressService service;
     @Test
     @Order(1)
     void save(){
@@ -52,6 +61,7 @@ class StudentAddressServiceImplementationTest {
     void findAll(){
         List<StudentAddress>studentAddressList=this.service.findAll();
         assertEquals(1,studentAddressList.size());
+        System.out.println(studentAddressList);
     }
     @Test
     @Order(5)
