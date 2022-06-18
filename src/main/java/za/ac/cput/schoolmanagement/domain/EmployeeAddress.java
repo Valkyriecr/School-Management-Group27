@@ -20,7 +20,7 @@ public class EmployeeAddress implements Serializable{
 
     }
 
-    public EmployeeAddress(Builder builder){
+    private EmployeeAddress(Builder builder){
         this.staffId=builder.staffId;
     }
 
@@ -38,7 +38,7 @@ public class EmployeeAddress implements Serializable{
 
     public static class Builder
     {
-        public String staffId;
+        private String staffId;
         public Builder staffId(String staffId) {
             this.staffId = staffId;
             return this;
@@ -52,7 +52,7 @@ public class EmployeeAddress implements Serializable{
             }
             public static class EmployeeAddressId implements Serializable
             {
-                public String staffId;
+                private String staffId;
                 public EmployeeAddressId(String staffId){this.staffId=staffId;}
                 protected EmployeeAddressId(){}
                 public String getStaffId(){return staffId;}

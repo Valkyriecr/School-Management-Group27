@@ -2,30 +2,31 @@ package za.ac.cput.schoolmanagement.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+import za.ac.cput.schoolmanagement.api.EmployeeApi;
 import za.ac.cput.schoolmanagement.domain.Employee;
 import za.ac.cput.schoolmanagement.service.service.EmployeeService;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("SchoolManagementGroup27/employee/")
 @Slf4j
 public class EmployeeController {
-public final EmployeeService employeeService;
-@Autowired public EmployeeController(EmployeeService employeeService){
-    this.employeeService=employeeService;
+
+private final EmployeeApi employeeApi;
+
+@Autowired public EmployeeController(EmployeeApi employeeApi){
+    this.employeeApi=employeeApi;
 
 }
 @PostMapping("save")
-    public ResponseEntity<Employee> save(@Valid @RequestBody Employee employee){
-    log.info("save Request:{}",employee);
-    Employee save=employeeService.save(employee);
+    public ResponseEntity<Employee> save(@Valid @RequestBody Employee employee) {
+
+    Employee save = this.employeeApi.save(employee);
     return ResponseEntity.ok(save);
+/*
 }
 @GetMapping("read/{employeeId}")
     public ResponseEntity<Employee> read(@PathVariable Employee.EmployeeId employeeId)
@@ -41,9 +42,12 @@ public final EmployeeService employeeService;
     this.employeeService.delete(employee);
     return ResponseEntity.noContent().build();
 }
-@GetMapping("Get All")
+@GetMapping("all")
     public ResponseEntity<List<Employee>> findAll(){
     List<Employee> employeeList= this.employeeService.findAll();
     return ResponseEntity.ok(employeeList);
+}
+
+*/
 }
 }
