@@ -19,6 +19,7 @@ public class NameRepository implements INameRepository{
 
     private NameRepository()
     {
+
         this.nameList = new ArrayList<>();
     }
 
@@ -50,11 +51,13 @@ public class NameRepository implements INameRepository{
     }
     //delete method
     public void delete(Name name){
+
         this.nameList.remove(name);
     }
 
     //find all method
     public List<Name> findAll(){
+
         return this.nameList;
     }
 }
