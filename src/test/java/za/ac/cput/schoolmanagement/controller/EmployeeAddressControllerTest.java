@@ -1,3 +1,6 @@
+//Daniel Marais
+//Student Number: 219476845
+//Group 27
 package za.ac.cput.schoolmanagement.controller;
 
 import lombok.extern.slf4j.Slf4j;
