@@ -1,8 +1,15 @@
+/*CountryFactory.java
+Factory for the CountryFactory
+Author: Zaakirah Fakier (220461503)
+Date: 18 June 2022
+ */
+
 package za.ac.cput.schoolmanagement.factory;
 
 import za.ac.cput.schoolmanagement.domain.Country;
 
 public class CountryFactory {
+
     public static Country build(String countryId, String name){
         if (countryId == null||countryId.isEmpty())
             throw new IllegalArgumentException("countryId is not Valid!");
@@ -10,5 +17,6 @@ public class CountryFactory {
             throw new IllegalArgumentException("Country Name is not Valid!");
 
         return new Country.Builder().countryId(countryId).name(name).build();
+
     }
 }

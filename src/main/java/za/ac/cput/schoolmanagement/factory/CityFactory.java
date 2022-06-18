@@ -1,3 +1,4 @@
+
 package za.ac.cput.schoolmanagement.factory;
 
 import za.ac.cput.schoolmanagement.domain.City;
@@ -15,5 +16,4 @@ public class CityFactory {
         return new City.Builder().cityId(cityId).cityName(cityName).country(country).build();
     }
     public static City.CityId buildId(City city){return new City.CityId(city.getCityId());}
-
 }

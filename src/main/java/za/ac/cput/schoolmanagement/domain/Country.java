@@ -1,3 +1,4 @@
+
 package za.ac.cput.schoolmanagement.domain;
 
 
@@ -60,3 +61,4 @@ public class Country {
         public CountryId(String countryId){this.countryId=countryId;}
     }
 }
+

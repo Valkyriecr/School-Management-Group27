@@ -1,3 +1,4 @@
+
 package za.ac.cput.schoolmanagement.domain;
 
 import javax.persistence.Embeddable;
@@ -5,6 +6,7 @@ import javax.persistence.Embedded;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
+
 
 @Embeddable
 public class City {

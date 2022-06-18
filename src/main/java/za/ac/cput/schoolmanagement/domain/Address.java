@@ -2,6 +2,7 @@ package za.ac.cput.schoolmanagement.domain;
 
 
 
+
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.validation.constraints.NotNull;
@@ -64,6 +65,7 @@ public class Address {
             address.setPostalCode(postalCode);
             return address;
         }
+
     }
 
     @Override
