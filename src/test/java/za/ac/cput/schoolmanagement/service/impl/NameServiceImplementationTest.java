@@ -8,21 +8,22 @@ package za.ac.cput.schoolmanagement.service.impl;
 
 import org.junit.jupiter.api.*;
 import za.ac.cput.schoolmanagement.domain.Name;
+import za.ac.cput.schoolmanagement.domain.Student;
 import za.ac.cput.schoolmanagement.factory.NameFactory;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class NameServiceImplementationTest {
-    private  Name name;
+    private final Name name =NameFactory.build("Amy","Liz","Louw");
     private NameServiceImplementation Service;
 
 //builds a name
     @BeforeEach
     void setup(){
-        this.name = NameFactory.build("Amy","Liz","Louw");
         this.Service = NameServiceImplementation.getNameService();
 
     }
@@ -37,14 +38,19 @@ class NameServiceImplementationTest {
         System.out.println(saved);
     }
 
-
+/*
     @Test
 //reads name
     void reader() {
-        this.Service.reader(name);
+        Optional<name>read= this.Service.reader(name);
         System.out.println(this.Service.reader(name));
+
+        Optional<Student> read=this.service.read(this.studentId);
+        System.out.println(read);
+        assertAll(()->assertTrue(read.isPresent()),()->assertEquals(this.student,read.get()));
     }
 
+    */
 
     @Test
 //finds all names

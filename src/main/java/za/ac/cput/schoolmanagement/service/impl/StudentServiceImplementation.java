@@ -8,17 +8,17 @@ package za.ac.cput.schoolmanagement.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.schoolmanagement.domain.Student;
-import za.ac.cput.schoolmanagement.repository.StudentRepository;
-import za.ac.cput.schoolmanagement.service.service.StudentService;
+import za.ac.cput.schoolmanagement.repository.IStudentRepository;
+import za.ac.cput.schoolmanagement.service.service.IStudentService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudentServiceImplementation implements StudentService {
-    public final StudentRepository repository;
+public class StudentServiceImplementation implements IStudentService {
+    public final IStudentRepository repository;
     @Autowired
-    public StudentServiceImplementation(StudentRepository repository){this.repository=repository;}
+    public StudentServiceImplementation(IStudentRepository repository){this.repository=repository;}
 
     @Override
     public Student save(Student student){return this.repository.save(student);}
@@ -30,7 +30,7 @@ public class StudentServiceImplementation implements StudentService {
     public void delete(Student student){this.repository.delete(student);}
 
     @Override
-    public List findByStudentId(String studentId){
+    public Student findByStudentId(String studentId){
         return this.repository.findByStudentId(studentId);
     }
 

@@ -12,7 +12,7 @@ import za.ac.cput.schoolmanagement.domain.Student;
 import java.util.List;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student,Student.StudentId> {
+public interface IStudentRepository extends JpaRepository<Student,Student.StudentId> {
     List<Student>findAll();
-    List<Student>findByStudentId(String studentId);
+    Student findByStudentId(String studentId);
 }

@@ -5,17 +5,23 @@ StudentFactory.java
  */
 package za.ac.cput.schoolmanagement.factory;
 
+import za.ac.cput.schoolmanagement.domain.Name;
 import za.ac.cput.schoolmanagement.domain.Student;
 import za.ac.cput.schoolmanagement.util.Helper;
 
 
 public class StudentFactory {
-    public static Student build(String studentId, String email){
-        if(studentId==null||studentId.isEmpty())
+    public static Student build(String studentId, String email, Name name){
+        if (studentId==null||studentId.isEmpty())
             throw new IllegalArgumentException("studentId is not valid!");
-        if(email==null||email.isEmpty())
+
+        if (email==null||email.isEmpty())
             throw new IllegalArgumentException("email is not valid!");
-        return new Student.Builder().studentId(studentId).email(email).build();
+
+        if(name==null)
+            throw new IllegalArgumentException("name is not valid!");
+
+        return new Student.Builder().studentId(studentId).email(email).name(name).build();
     }
     public static Student.StudentId buildId(Student student){
         return new Student.StudentId(student.getStudentId());

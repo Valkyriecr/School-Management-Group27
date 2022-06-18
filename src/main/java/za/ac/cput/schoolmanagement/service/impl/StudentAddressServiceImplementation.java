@@ -8,18 +8,18 @@ package za.ac.cput.schoolmanagement.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.schoolmanagement.domain.StudentAddress;
-import za.ac.cput.schoolmanagement.repository.StudentAddressRepository;
-import za.ac.cput.schoolmanagement.service.service.StudentAddressService;
+import za.ac.cput.schoolmanagement.repository.IStudentAddressRepository;
+import za.ac.cput.schoolmanagement.service.service.IStudentAddressService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudentAddressServiceImplementation implements StudentAddressService {
-    private final StudentAddressRepository repository;
+public class StudentAddressServiceImplementation implements IStudentAddressService {
+    private final IStudentAddressRepository repository;
 
     @Autowired
-    public StudentAddressServiceImplementation(StudentAddressRepository repository){
+    public StudentAddressServiceImplementation(IStudentAddressRepository repository){
         this.repository=repository;
     }
 

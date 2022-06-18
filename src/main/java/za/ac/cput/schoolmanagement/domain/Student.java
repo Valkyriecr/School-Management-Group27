@@ -13,46 +13,67 @@ import java.util.Objects;
 @Entity
 @IdClass(Student.StudentId.class)
 public class Student {
+    //Variables
     @NotNull
     @Id
     public String studentId;
     @NotNull
     public String email;
+    @NotNull
+    @Embedded
+    public Name name;
 
-    protected Student(){}
-    public Student(Builder builder){
-        this.studentId=builder.studentId;
-        this.email=builder.email;
+    //Constructor
+    public Student(){
+        studentId=null;
+        email=null;
+        name=null;
     }
-    public String getStudentId() {return studentId;}
-    public String getEmail() {return email;}
 
+    //Getters/Setters
+    public String getStudentId() {return studentId;}
+    public void setStudentId(String studentId) {this.studentId = studentId;}
+
+    public String getEmail() {return email;}
+    public void setEmail(String email) {this.email = email;}
+
+    public Name getName(){return name;}
+    public void setName(Name name) {this.name = name;}
+
+
+    //Builder Pattern
     public static class Builder{
         public String studentId;
         public String email;
+        public Name name;
 
-        public Builder studentId(String studentId){
-            this.studentId=studentId;
-            return this;
+        public Builder studentId(String studentId){this.studentId=studentId;return this;}
+        public Builder email(String email){this.email=email; return this;}
+        public Builder name(Name name){this.name = name; return this;}
+
+        public Student build(){
+           Student student =new Student();
+           student.setStudentId(studentId);
+           student.setEmail(email);
+           student.setName(name);
+           return student;
         }
-        public Builder email(String email){
-            this.email=email;
-            return this;
-        }
+
         public Builder copy(Student student){
             this.studentId=student.studentId;
             this.email=student.email;
+            this.name=student.name;
             return this;
         }
-        public Student build(){ return new Student(this);}}
+    }
 
     public static class StudentId implements Serializable{
         public String studentId;
         public StudentId(String studentId){this.studentId=studentId;}
-
         protected StudentId(){}
         public String getStudentId(){return studentId;}
     }
+
     @Override
     public boolean equals(Object o){
         if(this==o) return true;
@@ -69,6 +90,8 @@ public class Student {
         return "Student{" +
                 "studentId='" + studentId + '\'' +
                 ", email='" + email + '\'' +
+                ", name=" + name +
                 '}';
     }
+
 }

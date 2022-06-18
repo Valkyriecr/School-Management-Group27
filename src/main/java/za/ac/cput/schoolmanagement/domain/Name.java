@@ -6,39 +6,35 @@
  */
 package za.ac.cput.schoolmanagement.domain;
 
+import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
-
+@Embeddable
 public class Name {
     //Variables
     @NotNull
-    private final String firstName;
+    private String firstName;
     @NotNull
-    private final String middleName;
+    private String middleName;
     @NotNull
-    private final String lastName;
-    //Builder constructor
-    private Name(Builder builder)
-    {
-        this.firstName  = builder.firstName;
-        this.middleName = builder.middleName;
-        this.lastName   = builder.lastName;
+    private String lastName;
+
+   //Constructor
+    public Name(){
+        firstName=null;
+        middleName=null;
+        lastName=null;
     }
     //Getters
-    public String getFirstName() {
+    public String getFirstName() {return firstName;}
+    public void setFirstName(String firstName){this.firstName=firstName;}
 
-        return firstName;
-    }
+    public String getMiddleName() {return middleName;}
+    public void setMiddleName(String middleName) {this.middleName = middleName;}
 
-    public String getMiddleName() {
+    public String getLastName() {return lastName;}
+    public void setLastName(String lastName) {this.lastName = lastName;}
 
-        return middleName;
-    }
-
-    public String getLastName() {
-
-        return lastName;
-    }
     //Equals method
     @Override
     public boolean equals(Object o) {
@@ -56,12 +52,13 @@ public class Name {
 
     @Override
     public String toString() {
-        return "Builder{" +
+        return "Name{" +
                 "firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
 
     //Builder Pattern
     public static class Builder{
@@ -87,7 +84,11 @@ public class Name {
 
 
         public Name build(){
-            return new Name(this);
+            Name name = new Name();
+            name.setFirstName(firstName);
+            name.setLastName(lastName);
+            name.setMiddleName(middleName);
+            return name;
         }//end of getName method
 
     }
