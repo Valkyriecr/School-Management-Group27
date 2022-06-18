@@ -16,13 +16,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class NameServiceImplementationTest {
-    private  Name name;
+    private final Name name =NameFactory.build("Amy","Liz","Louw");
     private NameServiceImplementation Service;
 
 //builds a name
     @BeforeEach
     void setup(){
-        this.name = NameFactory.build("Amy","Liz","Louw");
         this.Service = NameServiceImplementation.getNameService();
 
     }
@@ -38,12 +37,12 @@ class NameServiceImplementationTest {
     }
 
 
-    @Test
+   /* @Test
 //reads name
     void reader() {
         this.Service.reader(name);
         System.out.println(this.Service.reader(name));
-    }
+    }*/
 
 
     @Test
